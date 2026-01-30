@@ -38,8 +38,18 @@
 
 Також бот вміє реагувати на запитання: "Світло є чи нема?"
 
+<!--Тут коротко описуємо налаштування телеграм бота -->
 
 
-<img src="Images/Photos/Photo_6.jpg" alt="Circuit_Image" width="80%">
+# Cхема:
+<img src="Images/Circuit_image.png" alt="Circuit_Image" width="100%">
 
+# Код:
 
+Вихідний код знаходиться у репозиторії за таким шляхом: [`Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino`](Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino)
+
+Завантажте прошивку для проєкту:
+
+<a href="https://github.com/Stanislav-developer/Light_Watcher/raw/main/Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino">
+  <img src="https://img.shields.io/badge/📥_Завантажити-Light__Watcher__Firmware.ino-blue?style=for-the-badge" alt="Download">
+</a>
