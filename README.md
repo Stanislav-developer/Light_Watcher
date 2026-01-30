@@ -65,3 +65,15 @@ const char* chatId = " "; // ChatID Власника бота
 const char* groupId = " "; // ChatID Загальної групи
 ```
 
+# Корпус:
+Змоделював корпус для того щоб зручно умістити та заховати у ньому всі компоненти:
+
+<img src="Images/Photos/Photo_7.jpg" alt="Circuit_Image" width="100%">
+<img src="Images/Photos/Photo_8.jpg" alt="Circuit_Image" width="80%">
+<img src="Images/Photos/Photo_9.jpg" alt="Circuit_Image" width="100%">
+
+STL Файли для друку: 
+[`Main/STL Models`]
+(Main/STL Models)
+
+CAD Файл(Fusion) для редагування: [`CAD File/Main.f3z`](Light_Watcher_Firmware_V1.0/CAD File/Main.f3z)
