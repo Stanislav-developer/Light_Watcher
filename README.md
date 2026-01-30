@@ -46,7 +46,7 @@
 
 # Код:
 
-Вихідний код знаходиться у репозиторії за таким шляхом: [`Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino`](Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino)
+### Вихідний код знаходиться у репозиторії за таким шляхом: [`Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino`](Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino)
 
 Завантажте цей файл або просто скопіюйте у вже існуючому .ino файл у себе на комп'ютері(Важливо завантажений ino. файл потрібно помістити у папку з таким самим іменем).
 
@@ -72,8 +72,6 @@ const char* groupId = " "; // ChatID Загальної групи
 <img src="Images/Photos/Photo_8.jpg" alt="Circuit_Image" width="80%">
 <img src="Images/Photos/Photo_9.jpg" alt="Circuit_Image" width="100%">
 
-STL Файли для друку: 
-[`Main/STL Models`]
-(Main/STL Models)
+### STL Файли для друку:  [`STL Models`](STL%20Models)
+### CAD Файл (Fusion) для редагування:  [`CAD File/Main.f3z`](CAD%20File/Main.f3z)
 
-CAD Файл(Fusion) для редагування: [`CAD File/Main.f3z`](Light_Watcher_Firmware_V1.0/CAD File/Main.f3z)
