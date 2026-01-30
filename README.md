@@ -48,8 +48,20 @@
 
 Вихідний код знаходиться у репозиторії за таким шляхом: [`Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino`](Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino)
 
-Завантажте прошивку для проєкту:
+Завантажте цей файл або просто скопіюйте у вже існуючому .ino файл у себе на комп'ютері(Важливо завантажений ino. файл потрібно помістити у папку з таким самим іменем).
 
-<a href="https://github.com/Stanislav-developer/Light_Watcher/raw/main/Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino">
-  <img src="https://img.shields.io/badge/📥_Завантажити-Light__Watcher__Firmware.ino-blue?style=for-the-badge" alt="Download">
-</a>
+Також у Arduino IDE вам потрібно завантажити ядро для роботи з платами esp32:   
+[`esp32 by Espressif Systems`](https://github.com/espressif/arduino-esp32/releases/latest) _(або через Board Manager)_
+
+Та 1 додаткову бібліотеку:  
+[`UniversalTelegramBot`](https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot/releases/latest) _(або через Library Manager)_
+
+Перед завантаженням прошивки замініть значення у цих рядках в коді на ваші:
+```
+const char* ssid = " "; // Назва домашньої WiFi мережі
+const char* password = " "; // Пароль домашньої WiFi мережі
+const char* botToken = " "; // Токен бота
+const char* chatId = " "; // ChatID Власника бота
+const char* groupId = " "; // ChatID Загальної групи
+```
+
