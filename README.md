@@ -87,6 +87,8 @@ const char* groupId = " "; // ChatID Загальної групи
 <img src="Images/Photos/Photo_7.jpg" alt="Circuit_Image" width="100%">
 <img src="Images/Photos/Photo_8.jpg" alt="Circuit_Image" width="80%">
 <img src="Images/Photos/Photo_9.jpg" alt="Circuit_Image" width="100%">
+<img src="Images/Photos/Photo_2.JPG" alt="Circuit_Image" width="100%">
+
 
 ### STL Файли для друку:  [`STL Models`](STL%20Models)
 ### CAD Файл (Fusion) для редагування:  [`CAD File/Main.f3z`](CAD%20File/Main.f3z)
@@ -102,6 +104,13 @@ const char* groupId = " "; // ChatID Загальної групи
 | 4 | Діоди Шотткі 1N5819 | 2шт |
 | 5 | Резистор 10kOm | 1шт |
 | 6 | Резистор 20kOm | 1шт |
-| 7 | [Перемикач KCD11](https://tinyurl.com/mryyff8m) | 1шт |
-| 8 | [Холдер для 18650}](https://tinyurl.com/mjyb3htm) | 1шт |
-| 9 | Акумулятор 18650 ємністю > 1000mAh | 1шт |
+| 7 | Шурупи М2x6| 6шт |
+| 8 | [Перемикач KCD11](https://tinyurl.com/mryyff8m) | 1шт |
+| 9 | [Холдер для 18650}](https://tinyurl.com/mjyb3htm) | 1шт |
+| 10 | Акумулятор 18650 ємністю > 1000mAh | 1шт |
+
+# Збірка:
+<img src="Images/Photos/Photo_3.JPG" alt="Circuit_Image" width="80%">
+
+# Готовий пристрій:
+
