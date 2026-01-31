@@ -92,16 +92,16 @@ const char* groupId = " "; // ChatID Загальної групи
 ### CAD Файл (Fusion) для редагування:  [`CAD File/Main.f3z`](CAD%20File/Main.f3z)
 
 # Необхідні компоненти:
-<img src="Images/Photos/Photo_1.jpg" alt="Circuit_Image" width="100%">
+<img src="Images/Photos/Photo_1.JPG" alt="Circuit_Image" width="100%">
 
 | НОМЕР | НАЗВА | КІЛЬКІСТЬ |
 | :---: | :---: | :--: |
-| 1 | [Мікроконтролер ESP32 C3 SuperMini](https://bit.ly/4tfI1aQ) | 1шт |
-| 2 | [Підвищуючий dc-dc перетворювач CKCS BS01](https://bit.ly/4qPc0o6) | 1шт |
-| 3 | [Плата заряду TP4056](https://bit.ly/4qPceLY) | 1шт |
-| 4 | [Діоди Шотткі 1N5819](https://bit.ly/4kei0V9) | 2шт |
+| 1 | [Мікроконтролер ESP32 C3 SuperMini](https://tinyurl.com/4h6e2k6n) | 1шт |
+| 2 | [Підвищуючий dc-dc перетворювач CKCS BS01](https://tinyurl.com/34p7wcya) | 1шт |
+| 3 | [Плата заряду TP4056](https://tinyurl.com/2sxvzadh) | 1шт |
+| 4 | Діоди Шотткі 1N5819 | 2шт |
 | 5 | Резистор 10kOm | 1шт |
 | 6 | Резистор 20kOm | 1шт |
-| 7 | [Перемикач KCD11](https://bit.ly/4ri5pCy) | 1шт |
+| 7 | [Перемикач KCD11](https://tinyurl.com/mryyff8m) | 1шт |
 | 8 | [Холдер для 18650}](https://tinyurl.com/mjyb3htm) | 1шт |
 | 9 | Акумулятор 18650 ємністю > 1000mAh | 1шт |
