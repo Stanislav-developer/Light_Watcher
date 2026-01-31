@@ -110,7 +110,16 @@ const char* groupId = " "; // ChatID Загальної групи
 | 10 | Акумулятор 18650 ємністю > 1000mAh | 1шт |
 
 # Збірка:
-<img src="Images/Photos/Photo_3.JPG" alt="Circuit_Image" width="80%">
+<img src="Images/Photos/Photo_3.JPG" alt="Circuit_Image" width="50%">
 
 # Готовий пристрій:
+<p align="lef">
+  <img src="Images/Photos/Photo_10.jpg" alt="Circuit_Image" height="400">
+  <img src="Images/Photos/Photo_11.jpg" alt="Circuit_Image" height="400">
+</p>
 
+# 💬 Зворотний зв'язок
+
+Буду вдячний за підтримку цього проєкту! Відкритий до критики, запитань, порад і пропозицій.
+
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@TehnoMaisterna) [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Stanislav-developer) [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/@Stanislav5749)
