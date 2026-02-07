@@ -10,8 +10,9 @@ IoT, Home Automation, Battery Backup, Light Monitoring, Електрика, Св
 [![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)](https://www.arduino.cc/)[![ESP32](https://img.shields.io/badge/ESP32-000000?style=for-the-badge&logo=espressif&logoColor=white)](https://www.espressif.com/)[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://telegram.org/)
 
 
-<!-- TODO: Додати посилання на YouTube відео -->
-
+| Відео-інструкція | Детальний опис та навігація |
+| :--- | :--- |
+| [![LightWatcher Guide](https://img.youtube.com/vi/MIB5mcXAo0U/maxresdefault.jpg)](https://www.youtube.com/watch?v=MIB5mcXAo0U) | **Таймкоди:** <br> [00:00](https://www.youtube.com/watch?v=MIB5mcXAo0U&t=0s) — Початок та демонстрація <br> [03:32](https://www.youtube.com/watch?v=MIB5mcXAo0U&t=212s) — Налаштування Telegram бота <br> [06:44](https://www.youtube.com/watch?v=MIB5mcXAo0U&t=404s) — Огляд схеми пристрою <br> [08:34](https://www.youtube.com/watch?v=MIB5mcXAo0U&t=514s) — Огляд коду <br> [18:23](https://www.youtube.com/watch?v=MIB5mcXAo0U&t=1103s) — 3D модель корпусу <br> [19:05](https://www.youtube.com/watch?v=MIB5mcXAo0U&t=1145s) — Перелік необхідних компонентів <br> [21:07](https://www.youtube.com/watch?v=MIB5mcXAo0U&t=1267s) — Збірка, прошивка та тест <br> [24:14](https://www.youtube.com/watch?v=MIB5mcXAo0U&t=1454s) — Кінцівка |
 
 </div>
 
