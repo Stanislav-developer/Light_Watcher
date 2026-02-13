@@ -149,13 +149,14 @@ void handleNewMessages() {
   if((chat_id == chatId || chat_id == groupId) && text == "Світло є чи нема?"){
     if(checkPowerStatus()){
       String ask_message = "🟢 <b>СВІТЛО Є!</b>\n\n";
-      ask_message += "🕐 Час відновлення: " + powerOnFormattedTime + "\n";
+      ask_message += "🕐 Час відновлення: " + powerOnFormattedTime.substring(11) + "\n";
+      ask_message += "⏱ Воно є: " + formatDuration(time(&currentTimestamp) - powerOnTimestamp) + "\n";
       bot.sendMessage(chat_id, ask_message, "HTML");
     }
     else{
       String ask_message = "🔴 <b>СВІТЛА НЕМАЄ</b>\n\n";
-      ask_message += "⏱ Тривалість відключення: " + formatDuration(time(&currentTimestamp) - powerOffTimestamp) + "\n";
-      ask_message += "🕐 Час відключення: " + powerOffFormattedTime;
+      ask_message += "🕐 Час відключення: " + powerOffFormattedTime.substring(11);
+      ask_message += "⏱ Його нема: " + formatDuration(time(&currentTimestamp) - powerOffTimestamp) + "\n";
       bot.sendMessage(chat_id, ask_message, "HTML");
     }
   }
@@ -298,7 +299,7 @@ void setup() {
     powerOnFormattedTime = getFormattedTime();
     
     String message = "🟢 <b>СВІТЛО З'ЯВИЛОСЯ</b>\n\n";
-    message += "🕐 Час відновлення: " + powerOnFormattedTime + "\n";
+    message += "🕐 Час відновлення: " + powerOnFormattedTime.substring(11) + "\n";
     message += "⏱ Тривалість відключення: " + formatDuration(outageSeconds) + "\n";
     message += "⚠️ Заряд акумулятора був критичний та пристрій вимкнувся...\n";
     message += "🔌 Живлення від мережі відновлено\n";
@@ -362,8 +363,11 @@ void loop() {
     powerOutageCount++; // Збільшуємо к-сть вимкнень світла на 1
     preferences.putInt("powerOutageCnt", powerOutageCount); 
 
+    unsigned long durationOnSeconds = (unsigned long)difftime(powerOffTimestamp, powerOnTimestamp);
+
     String message = "🔴 <b>СВІТЛО ВИМКНУЛИ</b>\n\n";
-    message += "🕐 Час відключення: " + getFormattedTime() + "\n";
+    message += "🕐 Час відключення: " + getFormattedTime().substring(11) + "\n";
+    message += "⏱ Воно було: " + formatDuration(durationOnSeconds) + "\n";
     
     bot.sendMessage(chatId, message, "HTML"); //Відсилаємо повідомлення у бота
     bot.sendMessage(groupId, message, "HTML"); //Відсилаємо повідомлення у групу
@@ -384,8 +388,8 @@ void loop() {
     powerOnFormattedTime = getFormattedTime(); // Розраховуємо тривалість вимкнення
     
     String message = "🟢 <b>СВІТЛО З'ЯВИЛОСЯ</b>\n\n";
-    message += "🕐 Час відновлення: " + powerOnFormattedTime + "\n";
-    message += "⏱ Тривалість відключення: " + formatDuration(outageSeconds) + "\n";
+    message += "🕐 Час відновлення: " + powerOnFormattedTime.substring(11) + "\n";
+    message += "⏱ Його не було: " + formatDuration(outageSeconds) + "\n";
     
     bot.sendMessage(chatId, message, "HTML");
     bot.sendMessage(groupId, message, "HTML");
