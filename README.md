@@ -97,7 +97,11 @@ restart - Віддалений перезапуск бота
 ## Прошивка
 
 ### Вихідний код
-Файл прошивки: [`Light_Watcher_Firmware_V1.0.ino`](Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino)
+Остання версія прошивки `V1.5`: [`Light_Watcher_Firmware_V1.5.ino`](Light_Watcher_Firmware_V1.5/Light_Watcher_Firmware_V1.5.ino)
+Зміни тільки у коді, жодних змін в залізі чи інших частинах немає, тому рекомендую прошивати саме її
+[Детально про зміни](https://github.com/Stanislav-developer/Light_Watcher/releases/tag/v1.5)
+
+Попередня версія `V1.0`: [`Light_Watcher_Firmware_V1.0.ino`](Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino)
 
 **Важливо:** .ino файл після завантаження повинен знаходитись у папці з таким самим іменем.
 
@@ -111,7 +115,7 @@ restart - Віддалений перезапуск бота
 
 ### Налаштування коду
 
-Перед завантаженням прошивки замініть значення на свої:
+Перед завантаженням прошивки замініть значення на свої(за бажанням):
 ```cpp
 const char* ssid = "YOUR_WIFI";           // Назва WiFi мережі
 const char* password = "YOUR_PASSWORD";   // Пароль WiFi
@@ -119,12 +123,13 @@ const char* botToken = "YOUR_TOKEN";      // Токен бота
 const char* chatId = "YOUR_CHAT_ID";      // Ваш Chat ID
 const char* groupId = "GROUP_CHAT_ID";    // Chat ID групи (опціонально)
 ```
+Також ви зможете заповнити їх пізніше у WEB Інтерфейсі конфігурації:
+
+<img src="Images/Photos/Photo_10.jpg" alt="WEB Інтерфейс" width="50%">
 
 ## Корпус
-
+### Габарити (ДхШхВ): 90 x 85 x 30 мм
 Спеціально розроблений 3D корпус для компактного розміщення всіх компонентів:
-
-Габарити (ДхШхВ): 90 x 85 x 30 мм
 
 <table>
   <tr>
@@ -150,7 +155,7 @@ const char* groupId = "GROUP_CHAT_ID";    // Chat ID групи (опціона�
 ## Готовий пристрій
 
 <p align="center">
-  <img src="Images/Photos/Photo_10.jpg" alt="Готовий пристрій 1" height="400">
+  <img src="Images/Photos/Photo_12.jpg" alt="Готовий пристрій 1" height="400">
   <img src="Images/Photos/Photo_11.jpg" alt="Готовий пристрій 2" height="400">
 </p>
 
