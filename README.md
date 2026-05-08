@@ -51,27 +51,9 @@ IoT, Home Automation, Battery Backup, Light Monitoring, Електрика, Св
 
 ## Налаштування Telegram бота
 
-### 1. Створення бота
-Створіть бота у Телеграмі за допомогою [@BotFather](https://t.me/botfather) та збережіть отриманий токен. [Детальна інструкція](https://ukr-bot.com/yak-stvoryty-telehram-bota-cherez-botfather/)
-
-### 2. Налаштування команд
-У @BotFather виберіть: Edit Bot → Edit Commands → Вставте:
-```
-info - Про бота
-status - Стан системи
-set_summer_time - Встановити літній час
-set_winter_time - Встановити зимовий час
-clear_data - Очистити статистику
-restart - Віддалений перезапуск бота
-```
-
-### 3. Налаштування групи (опціонально)
-Якщо плануєте додати бота у групу:
-- У @BotFather: Bot Settings → Allow Groups? → Увімкніть
-- Додайте бота у групу та зробіть його адміністратором
-
-### 4. Отримання Chat ID
-Дізнайтеся свій Chat ID та Chat ID групи за допомогою бота [@myidbot](https://t.me/myidbot)
+| 🖥️ Desktop | 📱 Mobile |
+| :---: | :---: |
+| [Переглянути інструкцію](Docs/Installation%20instruction%20for%20desktop.md) | [Переглянути інструкцію](Docs/Installation%20instruction%20for%20mobile.md) |
 
 ## Схема підключення
 
