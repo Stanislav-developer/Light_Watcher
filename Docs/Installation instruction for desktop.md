@@ -4,7 +4,7 @@
 
 Відкрийте пошук у застосунку Telegram і введіть **BotFather**. Перейдіть у цього бота.
 
-<img src="Images/Desktop/Photo_1.jpg" alt="Пошук BotFather" width="100%">
+<img src="Images/Desktop/Photo_1.jpg" alt="Пошук BotFather" width="30%">
 
 ---
 
@@ -12,7 +12,7 @@
 
 Напишіть боту команду `/newbot`, щоб розпочати реєстрацію.
 
-<img src="Images/Desktop/Photo_2.jpg" alt="Команда /newbot" width="100%">
+<img src="Images/Desktop/Photo_2.jpg" alt="Команда /newbot" width="40%">
 
 ---
 
@@ -20,7 +20,7 @@
 
 BotFather попросить вас ввести **назву** для бота — вона може бути будь-якою. Введіть її та надішліть.
 
-<img src="Images/Desktop/Photo_3.jpg" alt="Назва бота" width="100%">
+<img src="Images/Desktop/Photo_3.jpg" alt="Назва бота" width="40%">
 
 ---
 
@@ -34,7 +34,7 @@ BotFather попросить вас ввести **назву** для бота 
 
 Після цього перейдіть до бота за синім посиланням і натисніть **Start**.
 
-<img src="Images/Desktop/Photo_4.jpg" alt="Токен бота" width="100%">
+<img src="Images/Desktop/Photo_4.jpg" alt="Токен бота" width="40%">
 
 ---
 
@@ -42,7 +42,7 @@ BotFather попросить вас ввести **назву** для бота 
 
 Знову відкрийте пошук у Telegram і знайдіть бота **@myidbot**.
 
-<img src="Images/Desktop/Photo_5.jpg" alt="Пошук myidbot" width="100%">
+<img src="Images/Desktop/Photo_5.jpg" alt="Пошук myidbot" width="30%">
 
 ---
 
@@ -50,7 +50,7 @@ BotFather попросить вас ввести **назву** для бота 
 
 Напишіть боту команду `/getid`. Він поверне ваш особистий **Chat ID** — скопіюйте або запишіть його.
 
-<img src="Images/Desktop/Photo_6.jpg" alt="Отримання Chat ID" width="100%">
+<img src="Images/Desktop/Photo_6.jpg" alt="Отримання Chat ID" width="40%">
 
 ---
 
@@ -62,7 +62,7 @@ BotFather попросить вас ввести **назву** для бота 
 
 У BotFather введіть команду `/mybots` та виберіть зі списку нещодавно створеного бота.
 
-<img src="Images/Desktop/Photo_7.jpg" alt="Список ботів" width="100%">
+<img src="Images/Desktop/Photo_7.jpg" alt="Список ботів" width="40%">
 
 ---
 
@@ -70,7 +70,7 @@ BotFather попросить вас ввести **назву** для бота 
 
 Натисніть кнопку **Bot Settings**.
 
-<img src="Images/Desktop/Photo_8.jpg" alt="Bot Settings" width="100%">
+<img src="Images/Desktop/Photo_8.jpg" alt="Bot Settings" width="40%">
 
 ---
 
@@ -78,9 +78,9 @@ BotFather попросить вас ввести **назву** для бота 
 
 Натисніть **Allow Groups?** і переконайтеся, що групи увімкнені.
 
-<img src="Images/Desktop/Photo_9.jpg" alt="Allow Groups" width="100%">
+<img src="Images/Desktop/Photo_9.jpg" alt="Allow Groups" width="40%">
 
-<img src="Images/Desktop/Photo_10.jpg" alt="Групи увімкнені" width="100%">
+<img src="Images/Desktop/Photo_10.jpg" alt="Групи увімкнені" width="40%">
 
 ---
 
@@ -88,9 +88,9 @@ BotFather попросить вас ввести **назву** для бота 
 
 Натисніть на **три смужки** у лівому верхньому куті і виберіть **Нова група**.
 
-<img src="Images/Desktop/Photo_11.jpg" alt="Нова група — меню" width="100%">
+<img src="Images/Desktop/Photo_11.jpg" alt="Нова група — меню" width="40%">
 
-<img src="Images/Desktop/Photo_12.jpg" alt="Нова група" width="100%">
+<img src="Images/Desktop/Photo_12.jpg" alt="Нова група" width="40%">
 
 ---
 
@@ -98,9 +98,9 @@ BotFather попросить вас ввести **назву** для бота 
 
 Введіть назву для групи. Коли система запитає додати учасників — можете пропустити цей крок і додати їх пізніше.
 
-<img src="Images/Desktop/Photo_13.jpg" alt="Назва групи" width="100%">
+<img src="Images/Desktop/Photo_13.jpg" alt="Назва групи" width="40%">
 
-<img src="Images/Desktop/Photo_14.jpg" alt="Додавання учасників — пропустити" width="100%">
+<img src="Images/Desktop/Photo_14.jpg" alt="Додавання учасників — пропустити" width="40%">
 
 ---
 
@@ -108,9 +108,9 @@ BotFather попросить вас ввести **назву** для бота 
 
 Відкрийте групу, натисніть **Більше** та виберіть **Додати учасників**.
 
-<img src="Images/Desktop/Photo_15.jpg" alt="Більше" width="100%">
+<img src="Images/Desktop/Photo_15.jpg" alt="Більше" width="40%">
 
-<img src="Images/Desktop/Photo_16.jpg" alt="Додати учасників" width="100%">
+<img src="Images/Desktop/Photo_16.jpg" alt="Додати учасників" width="40%">
 
 ---
 
@@ -118,9 +118,9 @@ BotFather попросить вас ввести **назву** для бота 
 
 У пошуку знайдіть вашого бота (за юзернеймом) та **@myidbot** і додайте їх обох.
 
-<img src="Images/Desktop/Photo_17.jpg" alt="Пошук бота" width="100%">
+<img src="Images/Desktop/Photo_17.jpg" alt="Пошук бота" width="40%">
 
-<img src="Images/Desktop/Photo_18.jpg" alt="Пошук myidbot" width="100%">
+<img src="Images/Desktop/Photo_18.jpg" alt="Пошук myidbot" width="40%">
 
 ---
 
@@ -128,9 +128,9 @@ BotFather попросить вас ввести **назву** для бота 
 
 Зробіть **@myidbot** адміністратором групи, а потім повторіть те ж саме для вашого бота.
 
-<img src="Images/Desktop/Photo_19.jpg" alt="Призначити адміністратором" width="100%">
+<img src="Images/Desktop/Photo_19.jpg" alt="Призначити адміністратором" width="40%">
 
-<img src="Images/Desktop/Photo_20.jpg" alt="Підтвердження адміністратора" width="100%">
+<img src="Images/Desktop/Photo_20.jpg" alt="Підтвердження адміністратора" width="40%">
 
 ---
 
@@ -138,7 +138,7 @@ BotFather попросить вас ввести **назву** для бота 
 
 Список адміністраторів групи має виглядати приблизно так:
 
-<img src="Images/Desktop/Photo_21.jpg" alt="Список адміністраторів" width="100%">
+<img src="Images/Desktop/Photo_21.jpg" alt="Список адміністраторів" width="40%">
 
 ---
 
@@ -146,7 +146,7 @@ BotFather попросить вас ввести **назву** для бота 
 
 Напишіть у групу команду `/getgroupid`. Скопіюйте або збережіть отриманий **Group Chat ID** — він обов'язково починається з мінуса (`-`).
 
-<img src="Images/Desktop/Photo_22.jpg" alt="Group Chat ID" width="100%">
+<img src="Images/Desktop/Photo_22.jpg" alt="Group Chat ID" width="40%">
 
 ---
 
