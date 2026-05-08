@@ -4,7 +4,7 @@
 
 Відкрийте пошук у застосунку Telegram і введіть **BotFather**. Перейдіть у цього бота.
 
-<img src="Images/Mobile/Photo_1.jpg" alt="Пошук BotFather" width="30%">
+<img src="Images/Mobile/Photo_1.jpg" alt="Пошук BotFather" width="60%">
 
 ---
 
