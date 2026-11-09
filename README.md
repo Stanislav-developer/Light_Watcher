@@ -79,11 +79,12 @@ IoT, Home Automation, Battery Backup, Light Monitoring, Електрика, Св
 ## Прошивка
 
 ### Вихідний код
-Остання версія прошивки `V1.5`: [`Light_Watcher_Firmware_V1.5.ino`](Light_Watcher_Firmware_V1.5/Light_Watcher_Firmware_V1.5.ino)
-Зміни тільки у коді, жодних змін в залізі чи інших частинах немає, тому рекомендую прошивати саме її
-[Детально про зміни](https://github.com/Stanislav-developer/Light_Watcher/releases/tag/v1.5)
+Остання версія прошивки `V1.6`: [`Light_Watcher_Firmware_v1.6.ino`](Light_Watcher_Firmware/Light_Watcher_Firmware_v1.6.ino) (Update developed by [Noctyon](https://github.com/Noctyon))
 
-Попередня версія `V1.0`: [`Light_Watcher_Firmware_V1.0.ino`](Light_Watcher_Firmware_V1.0/Light_Watcher_Firmware_V1.0.ino)
+Зміни тільки у коді, жодних змін в залізі чи інших частинах немає, тому рекомендую прошивати саме її
+[Детально про зміни](https://github.com/Noctyon/Light_Watcher/releases/tag/v1.6)
+
+Попередня версія `V1.5`: [`Light_Watcher_Firmware_V1.5.ino`](Light_Watcher_Firmware/Light_Watcher_Firmware_V1.5.ino)
 
 **Важливо:** .ino файл після завантаження повинен знаходитись у папці з таким самим іменем.
 
@@ -99,15 +100,15 @@ IoT, Home Automation, Battery Backup, Light Monitoring, Електрика, Св
 
 Перед завантаженням прошивки замініть значення на свої(за бажанням):
 ```cpp
-const char* ssid = "YOUR_WIFI";           // Назва WiFi мережі
-const char* password = "YOUR_PASSWORD";   // Пароль WiFi
-const char* botToken = "YOUR_TOKEN";      // Токен бота
-const char* chatId = "YOUR_CHAT_ID";      // Ваш Chat ID
-const char* groupId = "GROUP_CHAT_ID";    // Chat ID групи (опціонально)
+const char* ssid = "";       // Назва WiFi мережі
+const char* password = "";   // Пароль WiFi
+const char* botToken = "";   // Токен бота
+const char* chatId = "";     // Ваш Chat ID
+const char* groupId = "";    // Chat ID групи (опціонально)
 ```
 Також ви зможете заповнити їх пізніше у WEB Інтерфейсі конфігурації:
 
-<img src="Images/Photos/Photo_10.jpg" alt="WEB Інтерфейс" width="50%">
+<img src="Images/Photos/WEB_v1.6.jpg" alt="WEB Інтерфейс" width="50%">
 
 ## Корпус
 ### Габарити (ДхШхВ): 90 x 85 x 30 мм
@@ -127,7 +128,7 @@ const char* groupId = "GROUP_CHAT_ID";    // Chat ID групи (опціона�
 </table>
 
 ### Файли для завантаження
-**STL моделі для друку:** [`STL Models`](STL%20Models)  
+**STL моделі для друку:** [`STL Models`](STL%20Models/Main)  
 **CAD файл (Fusion 360):** [`CAD File/Main.f3z`](CAD%20File/Main.f3z)
 
 ## Збірка
