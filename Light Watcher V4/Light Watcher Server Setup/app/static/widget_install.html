@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Віджет Light Watcher</title>
+<link rel="icon" href="favicon.png">
+<style>
+:root { --bg: #f4f5f3; --fg: #161a17; --muted: #5d665f; --card: #ffffff; --line: #d9ddd8; --acc: #1c7c4a; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg: #121513; --fg: #eef2ee; --muted: #9aa49c; --card: #1a1e1b; --line: #2a302b; --acc: #3ddc84; color-scheme: dark; } }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, -apple-system, sans-serif; padding: 24px max(16px, env(safe-area-inset-left)) 48px max(16px, env(safe-area-inset-right)); }
+main { max-width: 640px; margin: 0 auto; display: grid; gap: 18px; }
+h1 { font-size: 26px; margin: 0; line-height: 1.2; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
+pre { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; overflow-x: auto; font: 12.5px/1.5 ui-monospace, Menlo, monospace; white-space: pre; }
+button { font: inherit; font-weight: 600; border: 0; border-radius: 12px; padding: 12px 18px; background: var(--acc); color: #fff; cursor: pointer; justify-self: start; }
+button:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
+.box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Віджет Light Watcher для iPhone</h1>
+  <p class="muted">Світло, тривалість, напруга і смуга графіка на головному екрані та екрані блокування.</p>
+  <div class="box">
+    <ol>
+      <li>Встановіть безкоштовний застосунок <b>Scriptable</b> з App Store.</li>
+      <li>Відкрийте Scriptable, натисніть «+» і вставте текст нижче.</li>
+      <li>Назвіть скрипт, наприклад «Світло», і запустіть його один раз кнопкою ▶︎: має з'явитися середній віджет.</li>
+      <li>На головному екрані натисніть і втримайте порожнє місце → «Редагувати» → «Додати віджет» → Scriptable → малий або середній.</li>
+      <li>Натисніть на доданий віджет → «Script» → виберіть «Світло».</li>
+    </ol>
+  </div>
+  <pre id="code">{LOADER}</pre>
+  <button id="copy" type="button">Скопіювати</button>
+  <div class="box">
+    <p><b>Екран блокування:</b> натисніть і втримайте екран блокування → «Налаштувати» → «Екран блокування» → віджети → Scriptable. Підходять круглий, прямокутний і рядковий.</p>
+    <p class="muted">iOS сама вирішує, коли оновлювати віджет, зазвичай раз на 10–30 хв. Для миттєвих сповіщень лишається Telegram. Без зв'язку віджет показує останні дані, а через 20 хв — «Немає зв'язку».</p>
+  </div>
+</main>
+<script>
+document.getElementById("copy").addEventListener("click", function () {
+  var b = this, code = document.getElementById("code");
+  function done(t) { b.textContent = t; setTimeout(function () { b.textContent = "Скопіювати"; }, 2000); }
+  function pick() { var r = document.createRange(); r.selectNodeContents(code); var s = getSelection(); s.removeAllRanges(); s.addRange(r); done("Виділено, скопіюйте"); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code.textContent).then(function () { done("Скопійовано"); }, pick);
+  } else { pick(); }
+});
+</script>
+</body>
+</html>

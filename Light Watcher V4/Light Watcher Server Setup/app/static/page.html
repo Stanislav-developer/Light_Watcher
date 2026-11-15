@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Light Watcher</title>
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+<style>
+:root{--bg:#0f141a;--card:#18202a;--ink:#e6ebf1;--mut:#8e9bab;--line:#263140;--on:#33c072;--onS:#14301f;--off:#ef5f5f;--offS:#3a1b1d;--warn:#f0a83c;--warnS:#382a14;--nod:#2c3644;--acc:#6f9bff;--accS:#1b2a45;--sh:none;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f2f4f7;--card:#fff;--ink:#17202b;--mut:#647386;--line:#e6eaf0;--on:#1f9d55;--onS:#e3f5ea;--off:#d64545;--offS:#fbe7e7;--warn:#c27a12;--warnS:#fdf1de;--nod:#d3d9e1;--acc:#2a62d4;--accS:#e5edfb;--sh:0 1px 3px rgba(20,35,60,.08),0 4px 16px rgba(20,35,60,.05);color-scheme:light}}
+:root[data-theme=light]{--bg:#f2f4f7;--card:#fff;--ink:#17202b;--mut:#647386;--line:#e6eaf0;--on:#1f9d55;--onS:#e3f5ea;--off:#d64545;--offS:#fbe7e7;--warn:#c27a12;--warnS:#fdf1de;--nod:#d3d9e1;--acc:#2a62d4;--accS:#e5edfb;--sh:0 1px 3px rgba(20,35,60,.08),0 4px 16px rgba(20,35,60,.05);color-scheme:light}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.w{max-width:760px;margin:0 auto;padding:12px 16px 40px}a{color:var(--acc)}
+.top{display:flex;align-items:center;gap:10px;padding:6px 2px 12px}.top h1{font-size:17px;margin:0}.ti{min-width:0;flex:1}.loc{color:var(--mut);font-size:13px;margin-top:1px}
+.tg{margin-left:auto;background:none;border:1px solid var(--line);color:var(--mut);border-radius:8px;padding:4px 9px;font-size:13px;cursor:pointer}
+.c{background:var(--card);border-radius:16px;box-shadow:var(--sh);padding:16px;margin-bottom:12px}
+.stale{background:var(--offS);color:var(--off);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:14px}
+.hero{padding:20px}.hero.on{background:linear-gradient(180deg,var(--onS),var(--card) 75%)}.hero.off{background:linear-gradient(180deg,var(--offS),var(--card) 75%)}
+.st{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px}.st i{width:12px;height:12px;border-radius:50%;display:inline-block}i.on{background:var(--on)}i.off{background:var(--off)}
+.dur{font-size:40px;font-weight:750;letter-spacing:-.02em;margin:4px 0 2px;line-height:1.15}
+.sub,.l,.mut{color:var(--mut)}.sub{font-size:14px}.l{font-size:12px}.mut{font-size:13px}.err{color:var(--off)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.box{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card)}
+.box .v{font-size:18px;font-weight:700;margin:2px 0}.box .v.sm{font-size:15px}
+.vbar{position:relative;height:6px;border-radius:3px;background:var(--line);margin-top:8px}
+.vbar b{position:absolute;top:0;bottom:0;background:var(--onS);border-left:2px solid var(--on);border-right:2px solid var(--on)}
+.vbar u{position:absolute;top:-3px;width:3px;height:12px;margin-left:-1px;border-radius:2px;background:var(--ink)}
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:20px;margin-left:5px}
+.pill.r{background:var(--offS);color:var(--off)}.pill.a{background:var(--warnS);color:var(--warn)}
+.dev{margin-top:10px;font-size:13px;color:var(--warn)}
+h2{font-size:15px;margin:0}.hd{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.seg{margin-left:auto;display:flex;background:var(--bg);border-radius:9px;padding:2px}
+.seg button{border:0;background:none;color:var(--mut);font-size:13px;padding:5px 10px;border-radius:7px;cursor:pointer}
+.seg button.a{background:var(--card);color:var(--ink);box-shadow:var(--sh);font-weight:600}
+.ban{border-left:4px solid var(--off);background:var(--offS);color:var(--off);border-radius:8px;padding:8px 10px;margin:8px 0;font-size:13px}.ban.a{border-color:var(--warn);background:var(--warnS);color:var(--warn)}
+.ln{display:grid;grid-template-columns:38px 1fr;align-items:center;gap:8px;margin:5px 0}.ln>span{font-size:12px;color:var(--mut)}
+.tr{position:relative;background:var(--nod);border-radius:6px;overflow:hidden;height:30px}.tr.p{height:12px}
+.tr b{position:absolute;top:0;bottom:0;cursor:pointer}.bon{background:var(--on)}.boff{background:var(--off)}.bpos{background:var(--warn)}.bnod{background:var(--nod)}
+.tw{position:relative}.now{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:var(--ink);pointer-events:none}
+.ax{display:grid;grid-template-columns:38px 1fr;gap:8px}.ax div{position:relative;height:16px;font-size:11px;color:var(--mut)}.ax em{position:absolute;transform:translateX(-50%);font-style:normal}.ax em:first-child{transform:none}.ax em:last-child{transform:translateX(-100%)}
+.tip{min-height:20px;font-size:13px;color:var(--mut);margin-top:6px}.tr.dim,.slt.dim{opacity:.6}.slt{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.chip{background:var(--offS);color:var(--off);border-radius:10px;padding:6px 10px;font-size:14px;font-weight:650}.chip.a{background:var(--warnS);color:var(--warn)}.chip small{font-weight:500;opacity:.8;margin-left:6px;font-size:12px}.tip b{color:var(--ink)}
+.lg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--mut);margin-top:8px}.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.tabs{display:flex;gap:4px;overflow-x:auto;margin:16px 0 10px;scrollbar-width:none}
+.tabs button{flex:none;border:0;background:none;color:var(--mut);font-size:14px;padding:8px 12px;border-radius:10px;cursor:pointer}
+.tabs button.a{background:var(--card);color:var(--ink);font-weight:650;box-shadow:var(--sh)}
+.g{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.k{background:var(--bg);border-radius:12px;padding:10px 12px;min-width:0}.k .v{font-size:18px;font-weight:700;margin-top:2px}
+.wk .ln,.wk .ax{grid-template-columns:30px 1fr}.wk .tr{height:18px}
+.mk{position:absolute;top:0;bottom:0;width:3px;margin-left:-1px;background:var(--acc);pointer-events:none}.mk.s{background:#a78bfa}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px 2px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600;font-size:13px}td.r{text-align:right;color:var(--mut)}
+.day{font-size:12px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;margin:14px 0 2px}
+.sc{overflow-x:auto}.lw{color:var(--warn)}.le{color:var(--off)}
+.lgf{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}.lgf button{border:1px solid var(--line);background:none;color:var(--mut);border-radius:20px;padding:4px 10px;font-size:12px;cursor:pointer}.lgf button.a{background:var(--accS);color:var(--acc);border-color:transparent}
+button.btn{border:0;background:var(--acc);color:#fff;border-radius:10px;padding:10px 16px;font-size:14px;cursor:pointer;font-weight:600}button.s{background:var(--accS);color:var(--acc)}
+input{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;font-size:16px;margin:4px 0 10px;background:var(--bg);color:var(--ink)}
+details summary{cursor:pointer;color:var(--acc);margin-top:12px}
+svg{display:block;width:100%;height:auto}svg text{fill:var(--mut)}svg .vb{fill:var(--acc);cursor:pointer}svg .vo{fill:var(--off);cursor:pointer}svg .vz{fill:var(--onS)}
+@media(max-width:560px){.dur{font-size:34px}.g{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr}.c{padding:14px}}
+</style></head><body><div class="w"><div class="top"><div class="ti"><h1>Light Watcher</h1><div class="loc" id="loc"></div></div><button class="tg" id="th" title="Тема як у системі">◐</button></div>
+<div id="stale"></div><div id="app"><div class="c mut">Завантаження…</div></div></div>
+<script>
+var D=null,SYS=null,RCV=0,FAIL=0,SK=0,EV=null,SG=null,BUSY=0,TM=0,LAST={},TZ='Europe/Kyiv',S={tab:'ov',d:0,w:0,lf:0,sp:0,tip:'',wt:'',vt:''},VB=[];
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+var FC={};function fmt(l,o){var k=l+JSON.stringify(o);if(!FC[k]){o.timeZone=TZ;FC[k]=new Intl.DateTimeFormat(l,o)}return FC[k]}
+function fm(t,o){try{return fmt('uk-UA',o).format(new Date(t*1000))}catch(e){return new Date(t*1000).toLocaleString('uk-UA')}}
+function hm(t){return fm(t,{hour:'2-digit',minute:'2-digit',hourCycle:'h23'})}
+function fd(t){return fm(t,{day:'numeric',month:'long',year:'numeric'}).replace(/\sр\.$/,'')}
+function fdm(t){return fm(t,{day:'numeric',month:'long'})}
+function fdIso(v){if(!/^\d{4}-\d{2}-\d{2}/.test(String(v||'')))return '';var p=String(v).slice(0,10).split('-');return fd(Date.UTC(+p[0],+p[1]-1,+p[2],12)/1000)}
+function p2(n){return(n<10?'0':'')+n}
+function mm(m){return p2(Math.floor(m/60))+':'+p2(m%60)}
+function dur(s){s=Math.round(s);if(s<60)return'менше 1 хв';var d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return(d?d+' д ':'')+(d||h?h+' год ':'')+m+' хв'}
+function kp(l,v,c){return'<div class="k"><div class="l">'+l+'</div><div class="v"'+(c?' style="color:var(--'+c+')"':'')+'>'+v+'</div></div>'}
+function row(a,b){return'<tr><td>'+a+'</td><td class="r">'+b+'</td></tr>'}
+function set(id,h){var e=$(id);if(e&&LAST[id]!==h){LAST[id]=h;e.innerHTML=h;return 1}return 0}
+function nowT(){return D.now?D.now+Math.floor((Date.now()-RCV)/1000):0}
+function kyMin(t){try{var p=fmt('en-GB',{hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(t*1000).split(':');return(+p[0])*60+(+p[1])}catch(e){var d=new Date(t*1000);return d.getHours()*60+d.getMinutes()}}
+function kyDate(t){try{return fmt('en-CA',{year:'numeric',month:'2-digit',day:'2-digit'}).format(t*1000)}catch(e){return''}}
+var TH='';function theme(t){var r=document.documentElement,b=$('th');TH=t==='light'||t==='dark'?t:'';if(TH)r.setAttribute('data-theme',TH);else r.removeAttribute('data-theme');b.textContent=TH==='light'?'☀︎':TH==='dark'?'☾':'◐';b.title=TH==='light'?'Світла тема':TH==='dark'?'Темна тема':'Тема як у системі'}
+try{theme(localStorage.getItem('lwThemeM'))}catch(e){theme('')}
+$('th').onclick=function(){theme(TH===''?'light':TH==='light'?'dark':'');try{if(TH)localStorage.setItem('lwThemeM',TH);else localStorage.removeItem('lwThemeM')}catch(e){}};
+try{var h0=location.hash.slice(1);if(/^(ov|wk|vo|hi|dv)$/.test(h0))S.tab=h0}catch(e){}
+function plan(){clearTimeout(TM);TM=setTimeout(function(){if(!document.hidden)load()},D&&!D.pw?60000:30000)}
+function load(){if(BUSY)return;BUSY=1;clearTimeout(TM);fetch('api/data?ts='+Date.now()+(!D||D.pw?'&v=1':'')+(S.tab==='vo'?'':'&l=1'),{cache:'no-store',credentials:'same-origin'}).then(function(r){BUSY=0;
+if(r.status==401){login('');return}if(r.status==403){nopass();return}if(!r.ok)throw 0;
+return r.json().then(function(j){D=j;EV=SG=null;RCV=Date.now();FAIL=0;stale();render();plan();if(D.dev&&S.tab==='dv')loadSys()})}).catch(function(){BUSY=0;FAIL++;plan();if(D==null){if(!$('lf'))$('app').innerHTML='<div class="c err">Немає зв\'язку з пристроєм. Спробуйте оновити сторінку.</div>'}else stale()})}
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&D&&Date.now()-RCV>10000)load()});
+function stale(){$('stale').innerHTML=FAIL&&D?'<div class="stale">⚠️ Немає зв\'язку з пристроєм'+(D.now?' з '+hm(nowT()):'')+'. Дані нижче можуть бути застарілими.</div>':''}
+function reset(){D=null;SK=0;LAST={};$('loc').textContent='';$('stale').innerHTML=''}
+function nopass(){reset();$('app').innerHTML='<div class="c"><h2>🔐 Адмінпанель</h2><p>Пароль адміністратора ще не створено.</p><p class="mut">Створіть його в Telegram-боті: ⚙️ Налаштування → 🔑 Адмінпанель. Потім оновіть цю сторінку.</p></div>'}
+function login(m){reset();$('app').innerHTML='<div class="c"><h2 style="margin-bottom:10px">🔐 Вхід адміністратора</h2><form id="lf"><input id="u" placeholder="Логін" autocomplete="username" autocapitalize="none"><input id="p" type="password" placeholder="Пароль" autocomplete="current-password"><button class="btn">Увійти</button> <span id="lm" class="err">'+esc(m)+'</span></form></div>';
+$('lf').onsubmit=function(e){e.preventDefault();var b='user='+encodeURIComponent($('u').value)+'&pass='+encodeURIComponent($('p').value);
+fetch('api/login',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:b,credentials:'same-origin'}).then(function(r){return r.json().then(function(j){
+if(r.ok&&j.ok){$('app').innerHTML='<div class="c mut">Завантаження…</div>';BUSY=0;load()}else if(j.wait){$('lm').textContent='Забагато невдалих спроб. Зачекайте '+j.wait+' с.'}
+else if(r.status==403){nopass()}else{$('lm').textContent='Невірний логін або пароль.'}})}).catch(function(){$('lm').textContent='Помилка зв\'язку.'})}}
+function loadSys(){fetch('api/sys',{cache:'no-store',credentials:'same-origin'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){SYS=j;pane()}).catch(function(){})}
+function evs(){if(!EV)EV=(D.ev||[]).filter(function(e){return e[0]>0}).sort(function(a,b){return a[0]-b[0]});return EV}
+function cnt(since){var E=evs(),n=0;E.forEach(function(e){if(e[1]==3&&e[0]>=since)n++});return n+((D.evFull&&E.length&&E[0][0]>since)?'+':'')}
+function segs(){if(SG)return SG;var o=[],cur=-2,ct=0;evs().forEach(function(e){var k=e[1],s=(k==1||k==4)?1:(k==2||k==3)?0:-1;if(s===cur&&s>=0)return;if(cur>=0&&e[0]>ct)o.push([ct,e[0],cur]);var l=o[o.length-1];if(cur<0&&s>=0&&l&&l[2]===s&&l[1]===ct&&e[0]-ct<=300){o.pop();cur=s;ct=l[0];return}cur=s;ct=e[0]});if(cur>=0&&D.now>ct)o.push([ct,D.now,cur]);return SG=o}
+function clip(a,b){var o=[];segs().forEach(function(s){var x=Math.max(s[0],a),z=Math.min(s[1],b);if(z>x)o.push([x,z,s[2]])});return o}
+function offIn(a,b){var n=0;clip(a,b).forEach(function(s){if(!s[2])n+=s[1]-s[0]});return n}
+function onIn(a,b){var n=0;clip(a,b).forEach(function(s){if(s[2])n+=s[1]-s[0]});return n}
+function today(){if(!D.wk)return 0;for(var i=0;i<14;i++)if(D.wk[i]<=D.now&&D.now<D.wk[i+1])return D.wk[i];return 0}
+function vsamp(){return(D.vs||[]).filter(function(v){return v[0]>D.now-86400})}
+function lastChange(){var E=evs();for(var i=E.length-1;i>=0;i--){var k=E[i][1];if(k>=1&&k<=4)return((k==4&&D.pw)||(k==3&&!D.pw))?E[i][0]:0}return 0}
+function sl(a,merge){var o=[];(a||[]).forEach(function(x){var s=Math.max(0,Math.min(1440,+x.s||0)),e=Math.max(s,Math.min(1440,+x.e||0));if(e>s)o.push({s:s,e:e,t:x.t})});o.sort(function(a,b){return a.s-b.s});if(!merge)return o;
+var m=[];o.forEach(function(x){var l=m[m.length-1];if(l&&x.s<=l.e){if(x.e>l.e)l.e=x.e;if(x.t!=='Possible')l.t=x.t}else m.push({s:x.s,e:x.e,t:x.t})});return m}
+function todayOk(){var y=D.ys||{};return y.valid&&y.todayDate&&D.now&&kyDate(D.now)===String(y.todayDate).slice(0,10)}
+var STX={ScheduleApplies:'Графік застосовується',WaitingForSchedule:'Очікується уточнення графіка',EmergencyShutdowns:'Екстрені відключення',PlannedShutdowns:'Аварійні відключення',NoShutdowns:'Відключень не заплановано'};
+function render(){if(!SK){SK=1;LAST={};$('app').innerHTML='<div class="c hero" id="hero"></div><div class="c" id="day"></div><div class="tabs" id="tabs"></div><div id="pane"></div>'}
+var y=D.ys||{},ad=[y.city,y.street,y.house].filter(function(x){return x}).join(', ');$('loc').textContent=y.configured?[ad,y.group?'група '+y.group:''].filter(function(x){return x}).join(' · '):'';
+if(S.tab==='dv'&&!D.dev)S.tab='ov';hero();set('day',cDay());tabs();pane()}
+function hero(){var on=!!D.pw;$('hero').className='c hero '+(on?'on':'off');set('hero',cHero())}
+function cHero(){var on=!!D.pw,t=lastChange(),h='<div class="st"><i class="'+(on?'on':'off')+'"></i>'+(on?'Світло є':'Світла немає')+'</div>';
+h+='<div class="dur">'+(t&&D.sync?dur(nowT()-t):esc(D.dur||'—'))+'</div><div class="sub">'+(D.since?'з '+esc(D.since):'')+(D.since&&D.prev?' · ':'')+(D.prev?'до цього '+(on?'світла не було ':'світло було ')+esc(D.prev):'')+'</div>';
+h+='<div class="row"><div class="box">'+cVBox()+'</div><div class="box">'+cNext()+'</div></div>'+cDev();if(!D.sync)h+='<div class="dev">⚠️ Час на пристрої ще не синхронізовано.</div>';return h}
+function cVBox(){var h='<div class="l">Напруга</div>';if(!D.pw)return h+'<div class="v sm mut">—</div><div class="l">без світла не вимірюється</div>';if(D.volt==null)return h+'<div class="v sm mut">—</div><div class="l">немає свіжих даних</div>';
+var lo=D.lim[0],hi=D.lim[1],v=D.volt,a=Math.min(lo-15,v-5),b=Math.max(hi+15,v+5),pc=function(x){return(x-a)/(b-a)*100},out=v<lo||v>hi;
+return h+'<div class="v"'+(out?' style="color:var(--off)"':'')+'>'+v.toFixed(1).replace('.',',')+' В</div><div class="vbar"><b style="left:'+pc(lo).toFixed(1)+'%;right:'+(100-pc(hi)).toFixed(1)+'%"></b><u style="left:'+pc(v).toFixed(1)+'%"></u></div><div class="l" style="margin-top:6px">межі '+lo+'–'+hi+' В · '+hm(D.voltT)+'</div>'}
+function cNext(){var y=D.ys||{},h='<div class="l">Далі за графіком</div>';
+if(!y.configured)return h+'<div class="v sm">Адресу не налаштовано</div>'+(D.dev?'<div class="l">Telegram → ⚙️ Налаштування → 📅 Адреса YASNO</div>':'');
+if(!y.valid)return h+'<div class="v sm">Графік ще не завантажено</div>';
+if(y.todayStatus==='EmergencyShutdowns')return h+'<div class="v sm err">🚨 Екстрені відключення</div><div class="l">Плановий графік зараз не діє</div>';
+if(!D.sync||!todayOk())return h+'<div class="v sm">Немає графіка на сьогодні</div>';
+var pp=kyMin(nowT()),A=sl(y.today,1),B=(y.tomorrowDate&&y.tomorrowStatus!=='EmergencyShutdowns')?sl(y.tomorrow,1):[],r=null;
+for(var i=0;i<A.length&&!r;i++){var a=A[i];if(pp>=a.s&&pp<a.e){var e=a.e,tm=0;if(e>=1440&&B.length&&B[0].s===0){e=B[0].e;tm=1}r={on:1,at:e,n:(tm?1440:0)+e-pp,tm:tm,t:a.t}}else if(a.s>pp)r={on:0,at:a.s,n:a.s-pp,t:a.t}}
+if(!r&&B.length)r={on:0,at:B[0].s,n:1440-pp+B[0].s,tm:1,t:B[0].t};
+if(!r)return h+'<div class="v sm">Сьогодні відключень більше немає</div>';
+h+='<div class="v">'+(r.on?'Світло о '+mm(r.at):'Відключення о '+mm(r.at))+(r.tm?' <span class="mut">завтра</span>':'')+'</div><div class="l">через '+dur(r.n*60);
+if(!r.on)h+=r.t==='Possible'?'<span class="pill a">можливе</span>':'<span class="pill r">підтверджене</span>';
+if(y.todayStatus==='WaitingForSchedule')h+='<span class="pill a">уточнюється</span>';return h+'</div>'}
+function cDev(){var y=D.ys||{};if(!D.sync||!todayOk()||y.todayStatus==='EmergencyShutdowns'||y.todayStatus==='WaitingForSchedule')return'';
+var pp=kyMin(nowT()),cur=null;sl(y.today,0).forEach(function(a){if(pp>=a.s&&pp<a.e&&(!cur||a.t!=='Possible'))cur=a});if(cur&&cur.t==='Possible')return'';
+if(cur&&D.pw)return'<div class="dev">≠ Не за графіком: за планом зараз відключення, але світло є</div>';if(!cur&&!D.pw)return'<div class="dev">≠ Не за графіком: за планом світло є, але його немає</div>';return''}
+function bars(L,cls){var h='',M=[];L.forEach(function(s){var l=M[M.length-1];if(l&&l[2]===s[2]&&l[3]===s[3]&&s[0]<=l[1])l[1]=Math.max(l[1],s[1]);else M.push(s.slice())});M.forEach(function(s){h+='<b class="'+s[2]+'" data-a="'+s[0]+'" data-z="'+s[1]+'" data-n="'+s[3]+'" style="left:'+(s[0]/14.4).toFixed(2)+'%;width:'+(Math.max((s[1]-s[0])/14.4,.3)+.2).toFixed(2)+'%"></b>'});return'<div class="tr'+(cls?' '+cls:'')+'">'+h+'</div>'}
+function axis(){var h='<div class="ax"><span></span><div>';for(var q=0;q<=24;q+=6)h+='<em style="left:'+(q/24*100)+'%">'+p2(q)+':00</em>';return h+'</div></div>'}
+function cDay(){var y=D.ys||{},W=S.d,h='<div class="hd"><h2>'+(W?'Завтра':'Сьогодні')+'</h2>'+(y.configured&&y.valid?'<div class="seg"><button data-d="0" class="'+(W?'':'a')+'">Сьогодні</button><button data-d="1" class="'+(W?'a':'')+'">Завтра</button></div>':'')+'</div>';
+var date=W?y.tomorrowDate:y.todayDate,st=W?y.tomorrowStatus:y.todayStatus,plan=y.configured&&y.valid&&(!W||date)&&(W||todayOk()),em=st==='EmergencyShutdowns';
+if(y.configured&&y.valid&&date)h+='<div class="mut">'+esc(fdIso(date))+(STX[st]||st?' · '+esc(STX[st]||st):'')+'</div>';
+if(plan&&em)h+='<div class="ban"><b>🚨 Діють екстрені відключення.</b> Плановий графік зараз не застосовується.</div>';else if(plan&&st==='WaitingForSchedule')h+='<div class="ban a"><b>Графік очікує уточнення.</b> YASNO може змінити інтервали.</div>';
+if(!y.configured)h+='<p class="mut">Адресу YASNO не налаштовано — показано лише фактичний стан.</p>';else if(!y.valid)h+='<p class="mut">Графік YASNO ще не завантажено.'+(y.error?' '+esc(y.error):'')+'</p>';
+else if(W&&!date){h+='<p class="mut">YASNO ще не опублікував графік на завтра.</p>';return h}else if(!W&&!todayOk())h+='<p class="mut err">Графіка YASNO на сьогодні немає'+(date?' (останній — на '+esc(fdIso(date))+')':'')+'.</p>';
+if(plan){var P=sl(W?y.tomorrow:y.today,0),L=[],t=0,base='bon',bl=em?'Світло за збереженим графіком (не діє)':'Світло за графіком';P.forEach(function(a){if(a.s>t)L.push([t,a.s,base,bl]);L.push([a.s,a.e,a.t==='Possible'?'bpos':'boff',a.t==='Possible'?'Можливе відключення':'Відключення за графіком']);t=Math.max(t,a.e)});if(t<1440)L.push([t,1440,base,bl]);h+='<div class="ln"><span>План</span>'+bars(L,em?'p dim':'p')+'</div>'}
+var d0=today();if(!W&&D.sync&&d0){var F=clip(d0,d0+86400).map(function(s){return[(s[0]-d0)/60,(s[1]-d0)/60,s[2]?'bon':'boff',s[2]?'Світло було':'Світла не було']});h+='<div class="ln"><span>Факт</span><div class="tw">'+bars(F,'')+'<div class="now" style="left:'+((D.now-d0)/864).toFixed(2)+'%"></div></div></div>'}
+h+=axis()+'<div class="tip" id="tip">'+(S.tip||'')+'</div><div class="lg"><span><i class="bon"></i>Світло є</span><span><i class="boff"></i>Відключення</span>'+'<span><i class="bnod"></i>Немає даних</span>'+(plan&&em?'<span>Блідий план — збережений графік, зараз не діє</span>':'')+'</div>';
+if(plan){h+='<div class="slt'+(em?' dim':'')+'"><div class="l">'+(em?'За збереженим графіком (не діє)':'Відключення за графіком')+'</div>';if(!P.length)h+='<div class="mut" style="margin-top:4px">Відключень не заплановано</div>';else{h+='<div class="chips">';P.forEach(function(a){var q=a.t==='Possible';h+='<span class="chip'+(q?' a':'')+'">з '+mm(a.s)+' до '+mm(a.e)+'<small>'+dur((a.e-a.s)*60)+(q?' · можливе':'')+'</small></span>'});h+='</div>'}h+='</div>'}
+if(y.error&&y.valid)h+='<p class="mut err">Остання помилка оновлення графіка: '+esc(y.error)+'</p>';return h}
+var TABS=[['ov','Огляд'],['wk','Тиждень'],['vo','Напруга'],['hi','Історія'],['dv','🔒 Пристрій']];
+function tabs(){var h='';TABS.forEach(function(t){if(t[0]==='dv'&&!D.dev)return;h+='<button data-k="'+t[0]+'" class="'+(S.tab===t[0]?'a':'')+'">'+t[1]+'</button>'});set('tabs',h)}
+function wkRows(b){var S0=segs(),E=evs(),h='<div class="wk">';for(var i=0;i<7;i++){var d0=D.wk[b+i],d1=D.wk[b+i+1],L=(d1-d0)/1440,x='';
+S0.forEach(function(s){var a=Math.max(s[0],d0),z=Math.min(s[1],d1,D.now);if(z<=a)return;x+='<b class="'+(s[2]?'bon':'boff')+'" data-a="'+a+'" data-z="'+z+'" data-n="'+(s[2]?'Світло було':'Світла не було')+'" data-w="1" style="left:'+((a-d0)/L/14.4).toFixed(2)+'%;width:'+(Math.max((z-a)/L/14.4,.3)+.2).toFixed(2)+'%"></b>'});
+if(D.dev)E.forEach(function(e){if(e[0]>=d0&&e[0]<d1&&(e[1]==1||e[1]==2||e[1]==5))x+='<span class="mk'+(e[1]==5?' s':'')+'" style="left:'+((e[0]-d0)/L/14.4).toFixed(2)+'%"></span>'});
+h+='<div class="ln"><span>'+esc(D.dl[b+i])+'</span><div class="tr">'+x+'</div></div>'}
+h+='<div class="ax"><span></span><div>';for(var q=0;q<=24;q+=6)h+='<em style="left:'+(q/24*100)+'%">'+p2(q)+'</em>';return h+'</div></div></div>'}
+function wkBlock(b){return'<div class="hd" style="margin-top:16px"><h2>'+esc(fdm(D.wk[b]+43200))+' – '+esc(fdm(D.wk[b+6]+43200))+'</h2><div class="seg"><button data-w="1" class="'+(S.w?'a':'')+'">◀ Попередній</button><button data-w="0" class="'+(S.w?'':'a')+'">Поточний</button></div></div>'+wkRows(b)
++'<div class="tip" id="wtip">'+(S.wt||'')+'</div><div class="lg"><span><i class="bon"></i>Світло є</span><span><i class="boff"></i>Світла немає</span><span><i class="bnod"></i>Немає даних</span>'+(D.dev?'<span><i style="background:var(--acc)"></i>Запуск пристрою</span><span><i style="background:#a78bfa"></i>Зупинка пристрою</span>':'')+'</div><p class="mut">Фактична історія за журналом пристрою.</p>'}
+function pOv(){var s=D.st||{},h='<div class="c"><div class="g">';
+if(D.sync){var d0=today();h+=kp('Зі світлом сьогодні',d0?dur(onIn(d0,D.now)):'—')+kp('Без світла сьогодні',d0?dur(offIn(d0,D.now)):'—')+kp('Відключень сьогодні',d0?cnt(d0):'—')}else h+=kp('Відключень усього',Math.max(0,(s.total||0)-(s.open?1:0)))+kp('Сумарно без світла',dur(s.offSum||0))+kp('Сумарно зі світлом',dur(s.onSum||0));
+h+=kp('Найдовше відключення',s.exact?dur(s.maxOff):'—')+'</div>';
+if(D.sync&&D.wk)h+=wkBlock(S.w?0:7);
+if(D.evFull)h+='<p class="mut">«+» — журнал зберігає лише останні події; старіші вже витіснено.</p>';return h+'</div>'}
+function pWk(){if(!D.sync||!D.wk)return'<div class="c mut">Час на пристрої ще не синхронізовано.</div>';var b=S.w?0:7,on=0,off=0,n=0;clip(D.wk[b],Math.min(D.wk[b+7],D.now)).forEach(function(s){if(s[2])on+=s[1]-s[0];else off+=s[1]-s[0]});evs().forEach(function(e){if(e[1]==3&&e[0]>=D.wk[b]&&e[0]<D.wk[b+7])n++});
+return'<div class="c"><div class="g" style="grid-template-columns:repeat(3,1fr)">'+kp('Зі світлом',dur(on))+kp('Без світла',dur(off))+kp('Відключень',n)+'</div>'+wkBlock(b)+(D.wkimg?'<p><a href="week.png" target="_blank" rel="noopener">🖼 Картинка за 7 днів з графіком YASNO</a></p>':'')+'</div>'}
+function pVo(){if(D.lite)return'<div class="c mut">Завантаження…</div>';var vs=vsamp(),lo=D.lim[0],hi=D.lim[1],h='<div class="c"><div class="hd"><h2>Напруга за 24 години</h2></div><p class="mut" style="margin-top:0">Межі '+lo+'–'+hi+' В. Shelly опитується кожні 5 хв, при відкритій сторінці — кожні ~30 с.</p>';VB=[];
+if(!vs.length)h+='<p>Немає вимірювань Shelly за останні 24 години.</p>';else{var st=Math.floor(D.now/3600)*3600-82800,mn=1e9,mx=0,mnT=0,mxT=0;for(var i=0;i<24;i++)VB.push([]);
+vs.forEach(function(v){var i=Math.floor((v[0]-st)/3600);if(i>=0&&i<24)VB[i].push(v);if(v[1]<mn){mn=v[1];mnT=v[0]}if(v[1]>mx){mx=v[1];mxT=v[0]}});
+var y0=Math.min(lo-8,mn/10-3),y1=Math.max(hi+8,mx/10+3),X=34,PW=566,PH=150,bw=PW/24,Y=function(v){return 8+(y1-v)/(y1-y0)*PH},g='<svg viewBox="0 0 600 '+(PH+30)+'"><rect class="vz" x="'+X+'" y="'+Y(hi).toFixed(1)+'" width="'+PW+'" height="'+(Y(lo)-Y(hi)).toFixed(1)+'"/>';
+[lo,hi].forEach(function(l){g+='<text x="'+(X-4)+'" y="'+(Y(l)+4).toFixed(1)+'" font-size="10" text-anchor="end">'+l+'</text>'});
+VB.forEach(function(B,i){if(!B.length)return;var a=1e9,z=0;B.forEach(function(v){if(v[1]<a)a=v[1];if(v[1]>z)z=v[1]});var t=Y(z/10),u=Y(a/10);g+='<rect data-h="'+i+'" class="'+((a/10<lo||z/10>hi)?'vo':'vb')+'" x="'+(X+i*bw+2).toFixed(1)+'" y="'+t.toFixed(1)+'" width="'+(bw-4).toFixed(1)+'" height="'+Math.max(u-t,3).toFixed(1)+'" rx="2"/>'});
+for(var q=0;q<=24;q+=6)g+='<text x="'+(X+q*bw).toFixed(1)+'" y="'+(PH+26)+'" font-size="10" text-anchor="'+(q==24?'end':'middle')+'">'+hm(st+q*3600)+'</text>';
+h+=g+'</svg><div class="tip" id="vtip">'+(S.vt||'Натисніть на стовпчик, щоб побачити вимірювання за годину.')+'</div><div class="g" style="margin-top:10px">'+kp('Мінімум',(mn/10).toFixed(1)+' В <span class="l">'+hm(mnT)+'</span>',mn/10<lo?'off':'')+kp('Максимум',(mx/10).toFixed(1)+' В <span class="l">'+hm(mxT)+'</span>',mx/10>hi?'off':'')+kp('Зараз',D.pw&&D.volt!=null?D.volt.toFixed(1)+' В':'—')+kp('Вимірювань',vs.length)+'</div>'}
+var sp=(D.sp||[]).slice().reverse();h+='<details id="spd"'+(S.sp?' open':'')+'><summary>Виходи за межі ('+sp.length+')</summary>';
+if(!sp.length)h+='<p class="mut">Виходів напруги за межі не зафіксовано.</p>';else{h+='<div class="sc"><table>';sp.forEach(function(s){var v=s[1]/10,low=v<s[2];h+='<tr><td>'+esc(fdm(s[0]))+' '+hm(s[0])+'</td><td class="le">'+v.toFixed(1)+' В</td><td class="r">'+(low?'−':'+')+Math.abs(v-s[2]).toFixed(1)+' В '+(low?'нижче':'вище')+' '+s[2]+' В</td></tr>'});h+='</table></div>'}
+return h+'</details></div>'}
+function outs(){var o=[],c=null;evs().forEach(function(e){var k=e[1],t=e[0];if(k==3){if(c)o.push(c);c={a:t,b:0}}else if(k==4){if(c){c.b=t;o.push(c);c=null}}else if(k==1){if(c){c.u=1;o.push(c);c=null}}else if(k==2){if(!c)c={a:0,b:0}}});if(c){c.o=1;o.push(c)}return o}
+function dayName(t){var k=kyDate(t);return k===kyDate(D.now)?'Сьогодні':k===kyDate(D.now-86400)?'Вчора':fdm(t)}
+function pHi(){var s=D.st||{},R=[],h='<div class="c"><div class="g">'+(D.sync?kp('За 24 год',cnt(D.now-86400))+kp('За 30 днів',cnt(D.now-2592000)):'')+kp('Завершених',Math.max(0,(s.total||0)-(s.open?1:0)))+kp('Найдовше',s.exact?dur(s.maxOff):'—')+kp('Сумарно без світла',dur(s.offSum||0))+kp('Сумарно зі світлом',dur(s.onSum||0))+'</div>';
+outs().forEach(function(x){R.push({t:x.a||x.b||D.now,x:x})});if(D.bl&&D.bl.on)(D.bl.l||[]).forEach(function(b){if(b[0])R.push({t:b[0],b:b[1]})});R.sort(function(a,b){return b.t-a.t});R=R.slice(0,60);
+if(!R.length)h+='<p class="mut">Відключень ще не зафіксовано.</p>';var dn='';R.forEach(function(r){var d=dayName(r.t);if(d!==dn){h+=(dn?'</table>':'')+'<div class="day">'+esc(d)+'</div><table>';dn=d}
+if(r.b!=null){h+='<tr><td class="mut">'+hm(r.t)+' · ⚡ коротке зникнення</td><td class="r">'+r.b+' с</td></tr>';return}var x=r.x;
+if(x.o){h+='<tr><td class="le"><b>● '+(x.a?hm(x.a):'?')+' → триває</b></td><td class="r">'+(x.a?dur(D.now-x.a):'—')+'</td></tr>';return}
+var e=x.b?((x.a&&kyDate(x.a)!==kyDate(x.b))?fdm(x.b)+' ':'')+hm(x.b):(x.u?'перезапуск пристрою':'невідомо');h+='<tr><td>'+(x.a?hm(x.a):'невідомо')+' → '+e+'</td><td class="r">'+((x.a&&x.b)?dur(x.b-x.a):'—')+'</td></tr>'});if(dn)h+='</table>';
+if(D.bl)h+='<p class="mut">'+(D.bl.on?'⚡ — світло повернулося швидше ніж за '+D.bl.lim+' с: не відключення, у статистику не потрапляє. За 24 год: '+D.bl.d+', з запуску: '+D.bl.n+'.':'Розпізнавання коротких зникнень вимкнено: кожне зникнення — відключення.')+'</p>';return h+'</div>'}
+function pDv(){var v=D.dev,s=SYS,h='<div class="c"><div class="g">'+kp('Wi-Fi',v.rssi+' dBm')+kp('Вільна пам\'ять',Math.round(v.heap/1024)+' КБ')+kp('Без перезапуску',dur(v.up))+kp('Telegram',v.tg?'на зв\'язку':'недоступний',v.tg?'on':'off')+'</div><table style="margin-top:10px">'
++row('Версія прошивки',esc(v.ver))+row('Локальна IP',esc(v.ip))+row('Wi-Fi мережа',esc(v.ssid))+row('Shelly IP',esc(v.shelly||'не задано'))+row('Груп і каналів',v.chats)+row('Публічна сторінка',v.link?'<a href="'+esc(v.link)+'" target="_blank" rel="noopener">'+esc(v.link)+'</a>':'не налаштовано');
+if(s){var a=s.adc;h+=row('Запусків усього',s.boots)+row('Аварійних перезапусків',s.crash)+row('Причина останнього запуску',esc(s.reason)+(s.why?' ('+esc(s.why)+')':''))+row('Пам\'ять мін. / найбільший блок',Math.round(s.minHeap/1024)+' / '+Math.round(s.maxBlock/1024)+' КБ')
++row('Сховище налаштувань',s.nvsUsed+' з '+s.nvsTotal+' записів')+row('Процесор',s.cpu+' МГц')+row('Watchdog',s.wdt?'активний, 60 с':'вимкнений')+row('Безпечний режим',s.safe?'так':'ні')+row('Сертифікат Telegram',s.tls==2?'не проходить перевірку':'перевіряється')
++row('Датчик світла (за хвилину)',a.n?('мін. '+a.min+', макс. '+a.max+', сер. '+a.avg+', розкид '+a.sd+', сіра зона '+a.grey+'%'):'збирається')+row('Стан датчика',a.flags&7?'⚠️ '+((a.flags&1?'нестабільний ':'')+(a.flags&2?'біля порогів ':'')+(a.flags&4?'не змінюється':'')):'✅ норма')}
+h+='</table><p style="margin:14px 0 0"><button class="btn s" id="lo">Вийти</button></p></div><div class="c"><div class="hd"><h2>Журнал подій</h2></div>';
+if(!s)return h+'<p class="mut">Завантаження…</p></div>';h+='<div class="lgf">'+[['Усі',0],['Попередження',1],['Помилки',2]].map(function(b){return'<button data-f="'+b[1]+'" class="'+(S.lf===b[1]?'a':'')+'">'+b[0]+'</button>'}).join('')+'</div><div class="sc"><table>';
+var L=(s.log||[]).filter(function(e){return(e.s||0)>=S.lf});if(!L.length)h+='<tr><td class="mut">Подій немає</td></tr>';
+L.forEach(function(e){var c=e.s==2?'le':e.s==1?'lw':'';h+='<tr><td class="mut" style="width:110px">'+(e.t?esc(fdm(e.t))+' '+hm(e.t):(e.p?'попер. сеанс, ':'')+'+'+e.up+' с')+'</td><td class="'+c+'"><b style="font-weight:600">'+esc(e.c)+'</b> · '+esc(e.m)+'</td></tr>'});
+return h+'</table></div><p class="mut">Зберігаються останні 60 подій; попередження й помилки переживають перезапуск.</p></div>'}
+function pane(){if(!D)return;var t=S.tab;set('pane',t==='wk'?pWk():t==='vo'?pVo():t==='hi'?pHi():t==='dv'&&D.dev?pDv():pOv())}
+function go(k){S.tab=k;try{history.replaceState(null,'','#'+k)}catch(e){}tabs();pane();if(k==='dv')loadSys();if(k==='vo'&&D.lite)load();window.scrollTo(0,Math.min(window.scrollY,$('tabs').offsetTop-10))}
+function tipOf(b){var a=+b.getAttribute('data-a'),z=+b.getAttribute('data-z'),n=b.getAttribute('data-n');if(b.getAttribute('data-w'))return'<b>'+esc(fdm(a))+', '+hm(a)+' – '+hm(z)+'</b> · '+esc(n)+' · '+dur(z-a);return'<b>'+mm(a)+' – '+mm(z)+'</b> · '+esc(n)+' · '+dur((z-a)*60)}
+function cl(t,q){return t.closest?t.closest(q):null}
+document.addEventListener('click',function(ev){var t=ev.target,e;
+if((e=cl(t,'#tabs button')))return go(e.getAttribute('data-k'));
+if((e=cl(t,'#day .seg button'))){S.d=+e.getAttribute('data-d');S.tip='';set('day',cDay());return}
+if((e=cl(t,'#day .tr b'))){S.tip=tipOf(e);$('tip').innerHTML=S.tip;return}
+if((e=cl(t,'#pane .tr b'))){S.wt=tipOf(e);var w=$('wtip');if(w)w.innerHTML=S.wt;return}
+if((e=cl(t,'#pane .seg button[data-w]'))){S.w=+e.getAttribute('data-w');S.wt='';pane();return}
+if((e=cl(t,'#pane rect[data-h]'))){var B=VB[+e.getAttribute('data-h')]||[];S.vt=B.map(function(v){return hm(v[0])+' — <b>'+(v[1]/10).toFixed(1)+' В</b>'}).join(' · ');$('vtip').innerHTML=S.vt;return}
+if((e=cl(t,'#pane [data-f]'))){S.lf=+e.getAttribute('data-f');pane();return}
+if(cl(t,'#lo'))fetch('api/logout',{method:'POST',credentials:'same-origin'}).then(function(){login('')})});
+document.addEventListener('toggle',function(e){if(e.target&&e.target.id==='spd'){S.sp=e.target.open?1:0;LAST.pane=null}},true);
+setInterval(function(){if(D&&SK&&!document.hidden){hero();if(FAIL)stale()}},20000);
+load();
+</script></body></html>

@@ -1,0 +1,9 @@
+services:
+  lw:
+    build: .
+    env_file: .env
+    volumes:
+      - ./data:/data
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
